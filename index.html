@@ -1,0 +1,900 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Moon Pottery — Handcrafted Ceramics</title>
+
+  <!-- Bootstrap CSS -->
+  <link
+    href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+    rel="stylesheet"
+  >
+
+  <!-- Original Main Stylesheet -->
+  <link href="scripts/css/main.css" rel="stylesheet">
+
+  <!-- Google Fonts -->
+  <link
+    href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Noto+Sans+JP:wght@400;500&display=swap"
+    rel="stylesheet"
+  >
+
+  <style>
+
+    /* =====================================
+       ORIGINAL HOMEPAGE STYLES
+       ===================================== */
+
+    .highlight-divider {
+      text-align: center;
+      color: #000;
+      font-family: 'Great Vibes', cursive;
+    }
+
+    .highlight-divider h3 {
+      font-family: 'Great Vibes', cursive;
+      font-size: 2.5rem;
+      margin-bottom: 1rem;
+    }
+
+    .highlight-divider p {
+      font-size: 1.2rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .highlight-divider img {
+      width: 100%;
+      max-width: 100%;
+      height: 400px;
+      object-fit: cover;
+      display: block;
+      margin: 0 auto;
+    }
+
+    /* COLLECTION HEADINGS */
+    .section h2 {
+      font-family: 'Great Vibes', cursive;
+      font-size: 2.5rem;
+      font-weight: normal;
+      text-align: center;
+      margin-bottom: 3rem;
+    }
+
+    /* CAROUSEL CAPTION */
+    .carousel-caption h5.carousel-text {
+      font-family: 'Great Vibes', cursive;
+      font-size: 3rem;
+      font-weight: normal;
+    }
+
+    /* CAROUSEL BUTTON */
+    .carousel-button {
+      background-color: #fff;
+      color: #000;
+      border: 2px solid #000;
+      padding: 0.5rem 1.2rem;
+      border-radius: 4px;
+      font-weight: 500;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    .carousel-button:hover {
+      background-color: #000;
+      color: #fff;
+    }
+
+    /* =====================================
+       COLLECTION GALLERIES
+       ===================================== */
+
+    .section .gallery {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 24px;
+      width: 95%;
+      max-width: 1500px;
+      margin: 0 auto;
+      align-items: stretch;
+    }
+
+    .section .gallery .product {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: space-between;
+      width: 100%;
+      max-width: none;
+      min-width: 0;
+      margin: 0;
+      padding: 18px;
+      box-sizing: border-box;
+      background-color: #fff;
+      border-radius: 12px;
+    }
+
+    .section .gallery .product > a:first-child {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 100%;
+      flex: 1;
+    }
+
+    .section .gallery .product img {
+      display: block;
+      width: 100%;
+      height: 400px;
+      max-width: none;
+      object-fit: contain;
+      object-position: center;
+      border-radius: 12px;
+    }
+
+    .section .gallery .shop-link {
+      display: inline-block;
+      margin-top: 15px;
+    }
+
+    /* =====================================
+       ARTIST STATEMENT
+       AUTOMATIC HEIGHT
+       ===================================== */
+
+    .highlight-divider {
+      position: relative;
+      width: 100%;
+      height: auto !important;
+      min-height: 650px;
+      max-height: none !important;
+      overflow: visible !important;
+      background-color: #e8e3de;
+      text-align: center;
+    }
+
+    .highlight-divider .highlight-image {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      max-width: none;
+      object-fit: cover;
+      display: block;
+      margin: 0;
+    }
+
+    .highlight-divider .overlay {
+      position: relative;
+      z-index: 1;
+
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+
+      width: 100%;
+      height: auto !important;
+      min-height: 650px;
+      max-height: none !important;
+
+      margin: 0;
+      padding: 85px 8%;
+
+      background: rgba(0, 0, 0, 0.58);
+      color: white;
+      box-sizing: border-box;
+      transform: none;
+      overflow: visible;
+    }
+
+    /* ENGLISH ARTIST NAME */
+    .highlight-divider .overlay h3 {
+      font-family: 'Great Vibes', cursive;
+      font-size: 2.8rem;
+      font-weight: normal;
+      letter-spacing: 0;
+      line-height: 1.5;
+      color: #fff;
+      margin: 0 0 35px;
+    }
+
+    /* ENGLISH ARTIST STATEMENT */
+    .highlight-divider .overlay p {
+      width: 100%;
+      max-width: 850px;
+      margin: 0;
+
+      font-family: Georgia, 'Times New Roman', serif;
+      font-size: 1.05rem;
+      font-weight: normal;
+      line-height: 1.95;
+
+      text-align: left;
+      white-space: pre-line;
+      overflow-wrap: break-word;
+      color: #fff;
+    }
+
+    /* =====================================
+       JAPANESE ARTIST STATEMENT
+       ===================================== */
+
+    body.japanese-mode
+    .highlight-divider .overlay h3 {
+      font-family: 'Noto Sans JP', sans-serif;
+      font-size: 1.8rem;
+      font-weight: 400;
+      letter-spacing: 0.12em;
+      line-height: 1.6;
+      margin-bottom: 30px;
+    }
+
+    body.japanese-mode
+    .highlight-divider .overlay p {
+      font-family: 'Noto Sans JP', sans-serif;
+      font-size: 0.91rem;
+      font-weight: 400;
+      line-height: 1.85;
+      letter-spacing: 0.01em;
+      white-space: pre-line;
+    }
+
+    /* =====================================
+       TABLET
+       ===================================== */
+
+    @media (max-width: 900px) {
+
+      .section .gallery {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .section .gallery .product img {
+        height: 350px;
+      }
+
+      .highlight-divider .overlay {
+        padding: 65px 7%;
+      }
+
+    }
+
+    /* =====================================
+       MOBILE
+       ===================================== */
+
+    @media (max-width: 600px) {
+
+      .section .gallery {
+        grid-template-columns: 1fr;
+        width: 92%;
+        gap: 22px;
+      }
+
+      .section .gallery .product img {
+        height: auto;
+        max-height: 450px;
+        object-fit: contain;
+      }
+
+      .section h2 {
+        font-size: 2.1rem;
+      }
+
+      .carousel-caption h5.carousel-text {
+        font-size: 2.2rem;
+      }
+
+      .highlight-divider {
+        min-height: 0;
+      }
+
+      .highlight-divider .overlay {
+        min-height: 0;
+        padding: 55px 7%;
+      }
+
+      .highlight-divider .overlay h3 {
+        font-size: 2.8rem;
+        margin-bottom: 25px;
+      }
+
+      .highlight-divider .overlay p {
+        font-size: 0.92rem;
+        line-height: 1.85;
+      }
+
+      body.japanese-mode
+      .highlight-divider .overlay h3 {
+        font-size: 1.55rem;
+      }
+
+      body.japanese-mode
+      .highlight-divider .overlay p {
+        font-size: 0.875rem;
+        line-height: 1.85;
+      }
+
+    }
+
+    @media (max-width: 480px) {
+
+      .highlight-divider .overlay {
+        padding: 45px 6%;
+      }
+
+      .highlight-divider .overlay h3 {
+        font-size: 2.5rem;
+      }
+
+      .highlight-divider .overlay p {
+        font-size: 0.88rem;
+        line-height: 1.8;
+      }
+
+      body.japanese-mode
+      .highlight-divider .overlay h3 {
+        font-size: 1.4rem;
+      }
+
+      body.japanese-mode
+      .highlight-divider .overlay p {
+        font-size: 0.85rem;
+        line-height: 1.85;
+      }
+
+    }
+
+  </style>
+</head>
+
+<body class="index-page">
+
+  <!-- HEADER -->
+  <header>
+
+    <div class="brand">
+      <img
+        src="images/logo.jpg"
+        alt="Moon Pottery Logo"
+        class="header-logo"
+      >
+
+      <span data-en="Moon Pottery">
+        Moon Pottery
+      </span>
+    </div>
+
+    <nav>
+
+      <a href="index.html" class="nav-home" data-en="HOME">
+        HOME
+      </a>
+
+      <a href="shop.html" class="nav-shop" data-en="SHOP">
+        SHOP
+      </a>
+
+      <a href="about.html" class="nav-about" data-en="ABOUT">
+        ABOUT
+      </a>
+
+      <a href="contact.html" class="nav-contact" data-en="CONTACT">
+        CONTACT
+      </a>
+
+      <button class="lang-btn" id="toggle-lang">
+        日本語
+      </button>
+
+    </nav>
+
+  </header>
+
+  <!-- =====================================
+       BOOTSTRAP CAROUSEL
+       ===================================== -->
+
+  <div
+    id="featured"
+    class="carousel slide"
+    data-bs-ride="carousel"
+    style="margin-top: 2rem;"
+  >
+
+    <div class="carousel-indicators">
+
+      <button
+        type="button"
+        data-bs-target="#featured"
+        data-bs-slide-to="0"
+        class="active"
+        aria-current="true"
+        aria-label="Slide 1"
+      ></button>
+
+      <button
+        type="button"
+        data-bs-target="#featured"
+        data-bs-slide-to="1"
+        aria-label="Slide 2"
+      ></button>
+
+      <button
+        type="button"
+        data-bs-target="#featured"
+        data-bs-slide-to="2"
+        aria-label="Slide 3"
+      ></button>
+
+    </div>
+
+    <div class="carousel-inner">
+
+      <!-- Slide 1 -->
+      <div class="carousel-item active">
+
+        <img
+          src="images/42.jpeg"
+          alt="Moon"
+          class="d-block w-100"
+        >
+
+        <div class="carousel-caption">
+
+          <h5
+            class="carousel-text"
+            data-en="Moon Pottery"
+          >
+            Moon Pottery
+          </h5>
+
+          <button
+            class="carousel-button"
+            onclick="location.href='shop.html'"
+            data-en="Start Shopping"
+          >
+            Start Shopping
+          </button>
+
+        </div>
+      </div>
+
+      <!-- Slide 2 -->
+      <div class="carousel-item">
+
+        <img
+          src="images/53.jpeg"
+          alt="Stars"
+          class="d-block w-100"
+        >
+
+        <div class="carousel-caption">
+
+          <h5
+            class="carousel-text"
+            data-en="Moon Pottery"
+          >
+            Moon Pottery
+          </h5>
+
+          <button
+            class="carousel-button"
+            onclick="location.href='shop.html'"
+            data-en="Start Shopping"
+          >
+            Start Shopping
+          </button>
+
+        </div>
+      </div>
+
+      <!-- Slide 3 -->
+      <div class="carousel-item">
+
+        <img
+          src="images/pink.jpeg"
+          alt="Sun"
+          class="d-block w-100"
+        >
+
+        <div class="carousel-caption">
+
+          <h5
+            class="carousel-text"
+            data-en="Moon Pottery"
+          >
+            Moon Pottery
+          </h5>
+
+          <button
+            class="carousel-button"
+            onclick="location.href='shop.html'"
+            data-en="Start Shopping"
+          >
+            Start Shopping
+          </button>
+
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Previous -->
+    <button
+      class="carousel-control-prev"
+      type="button"
+      data-bs-target="#featured"
+      data-bs-slide="prev"
+      aria-label="Previous slide"
+    >
+      <span class="carousel-control-prev-icon"></span>
+    </button>
+
+    <!-- Next -->
+    <button
+      class="carousel-control-next"
+      type="button"
+      data-bs-target="#featured"
+      data-bs-slide="next"
+      aria-label="Next slide"
+    >
+      <span class="carousel-control-next-icon"></span>
+    </button>
+
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- =====================================
+       JAR COLLECTION
+       ===================================== -->
+
+  <section class="section">
+
+    <h2 data-en="Jar Collection">
+      Jar Collection
+    </h2>
+
+    <div class="gallery">
+
+      <div class="product">
+        <a href="shop.html">
+          <img
+            src="images/2.jpeg"
+            alt="Stoneware Vase"
+          >
+        </a>
+
+        <a href="shop.html" class="shop-link" data-en="SHOP">
+          SHOP
+        </a>
+      </div>
+
+      <div class="product">
+        <a href="shop.html">
+          <img
+            src="images/26.jpeg"
+            alt="Serving Bowl"
+          >
+        </a>
+
+        <a href="shop.html" class="shop-link" data-en="SHOP">
+          SHOP
+        </a>
+      </div>
+
+      <div class="product">
+        <a href="shop.html">
+          <img
+            src="images/16.jpeg"
+            alt="Porcelain Cup"
+          >
+        </a>
+
+        <a href="shop.html" class="shop-link" data-en="SHOP">
+          SHOP
+        </a>
+      </div>
+
+    </div>
+
+  </section>
+
+  <!-- =====================================
+       FRUIT BOWL COLLECTION
+       ===================================== -->
+
+  <section class="section">
+
+    <h2 data-en="Fruit Bowl Collection">
+      Fruit Bowl Collection
+    </h2>
+
+    <div class="gallery">
+
+      <div class="product">
+        <a href="shop.html">
+          <img
+            src="images/43.jpeg"
+            alt="Stoneware Vase"
+          >
+        </a>
+
+        <a href="shop.html" class="shop-link" data-en="SHOP">
+          SHOP
+        </a>
+      </div>
+
+      <div class="product">
+        <a href="shop.html">
+          <img
+            src="images/b31.jpeg"
+            alt="Serving Bowl"
+          >
+        </a>
+
+        <a href="shop.html" class="shop-link" data-en="SHOP">
+          SHOP
+        </a>
+      </div>
+
+      <div class="product">
+        <a href="shop.html">
+          <img
+            src="images/58.jpeg"
+            alt="Porcelain Cup"
+          >
+        </a>
+
+        <a href="shop.html" class="shop-link" data-en="SHOP">
+          SHOP
+        </a>
+      </div>
+
+    </div>
+
+  </section>
+
+  <!-- =====================================
+       FEATURED COLLECTION
+       ===================================== -->
+
+  <section class="section">
+
+    <h2 data-en="Featured Collection">
+      Featured Collection
+    </h2>
+
+    <div class="gallery">
+
+      <div class="product">
+        <a href="shop.html">
+          <img
+            src="images/b41.jpeg"
+            alt="Stoneware Vase"
+          >
+        </a>
+
+        <a href="shop.html" class="shop-link" data-en="SHOP">
+          SHOP
+        </a>
+      </div>
+
+      <div class="product">
+        <a href="shop.html">
+          <img
+            src="images/b71.jpeg"
+            alt="Serving Bowl"
+          >
+        </a>
+
+        <a href="shop.html" class="shop-link" data-en="SHOP">
+          SHOP
+        </a>
+      </div>
+
+      <div class="product">
+        <a href="shop.html">
+          <img
+            src="images/c39.jpeg"
+            alt="Porcelain Cup"
+          >
+        </a>
+
+        <a href="shop.html" class="shop-link" data-en="SHOP">
+          SHOP
+        </a>
+      </div>
+
+    </div>
+
+  </section>
+
+  <!-- =====================================
+       ARTIST STATEMENT
+       ===================================== -->
+
+  <section class="highlight-divider">
+
+    <img
+      src="images/shadow.jpeg"
+      alt="Shadow"
+      class="highlight-image"
+    >
+
+    <div class="overlay">
+
+      <h3 id="statement-name">
+        Tomoko Latko
+      </h3>
+
+      <p id="artist-statement"></p>
+
+    </div>
+
+  </section>
+
+  <!-- =====================================
+       FOOTER
+       ===================================== -->
+
+  <footer>
+
+    <span data-en="© 2025 MOON POTTERY — ALL RIGHTS RESERVED.">
+      © 2025 MOON POTTERY — ALL RIGHTS RESERVED.
+    </span>
+
+    <div class="footer-links" style="margin-top: 1rem;">
+
+      <a href="about.html" data-en="ABOUT">ABOUT</a>
+      |
+
+      <a href="faqs.html" data-en="FAQs">FAQs</a>
+      |
+
+      <a href="contact.html" data-en="CONTACT">CONTACT</a>
+      |
+
+      <a href="press.html" data-en="PRESS ROOM">
+        PRESS ROOM
+      </a>
+
+    </div>
+
+    <div class="footer-logo">
+      <img
+        src="images/logo.jpg"
+        alt="Moon Pottery Logo"
+      >
+    </div>
+
+  </footer>
+
+  <!-- Bootstrap JavaScript -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+  <!-- =====================================
+       LANGUAGE SWITCH
+       ===================================== -->
+
+  <script>
+
+    const translations = {
+      "MOON POTTERY": "陶芸月",
+      "Moon Pottery": "陶芸月",
+      "HOME": "ホーム",
+      "SHOP": "ショップ",
+      "ABOUT": "私について",
+      "CONTACT": "お問い合わせ",
+      "Start Shopping": "ショップを見る",
+      "Jar Collection": "小物入れコレクション",
+      "Fruit Bowl Collection": "フルーツボウルコレクション",
+      "Featured Collection": "注目のコレクション",
+      "FAQs": "よくある質問",
+      "PRESS ROOM": "プレスルーム",
+      "© 2025 MOON POTTERY — ALL RIGHTS RESERVED.":
+        "© 2025 ムーンポタリー — 無断転載を禁じます。"
+    };
+
+    /* ENGLISH ARTIST STATEMENT */
+
+    const statementEnglish = `My late father named me Tomoko. The first character of my name, 朋, consists of two moon-shaped elements and means friendship. My father loved Confucius's Analects and carried it everywhere he went. He chose the kanji 朋 from the passage “有朋自遠方来、不亦楽乎” (“Is it not a pleasure to have friends come from afar?”). This may be why I am so attracted to round shapes like the full moon. I love repetitive designs and organic forms, creating patterns that reflect the passage of time.
+
+Most of my work focuses on organic, repetitive patterns, simplicity, and the concept of Memento Mori, the reminder that life is temporary and everything eventually changes or disappears. This idea also connects to the Buddhist concept of impermanence (無常) and the Japanese aesthetic of Wabi-Sabi (侘び寂び), which finds beauty in simplicity and imperfection.
+
+I reflect on memory and time through the repeated process of making marks. I hope my ceramic pieces will remain after I am gone, carrying traces of my thoughts and love for my family into the future.`;
+
+    /* JAPANESE ARTIST STATEMENT */
+
+    const statementJapanese = `私の名前「朋子」は、亡き父がつけてくれたものです。「朋」という漢字は、月の形をした二つの部分から成り、友情を意味します。父は孔子の『論語』を愛読し、いつも持ち歩いていました。「朋」という字は、「有朋自遠方来、不亦楽乎」（朋あり遠方より来たる、また楽しからずや）という一節から選んだそうです。
+
+私が満月のような丸い形に強く惹かれるのも、そのためかもしれません。私は繰り返しのデザインや有機的な形を好み、時間の流れを映し出す模様を制作しています。
+
+私の作品の多くは、有機的な形、反復する模様、シンプルさ、そして「メメント・モリ（Memento Mori）」という概念を中心にしています。メメント・モリとは、人生は永遠ではなく、すべてのものはやがて変化し、消えていくということを思い起こさせる言葉です。
+
+この考えは、仏教の「無常」や、簡素さや不完全さの中に美を見いだす日本の美意識「侘び寂び」にもつながっています。
+
+私は、繰り返し模様を刻む制作過程を通して、記憶と時間について思いを巡らせています。そして、私がこの世を去ったあとも、私の陶芸作品が残り、家族への思いや愛情の痕跡を未来へと伝えてくれることを願っています。`;
+
+    /* REMEMBER SELECTED LANGUAGE */
+
+    let isJapanese = false;
+
+    try {
+      isJapanese =
+        localStorage.getItem("moonPotteryLanguage") === "ja";
+    } catch (error) {
+      isJapanese = false;
+    }
+
+    /* UPDATE LANGUAGE */
+
+    function updateLanguage() {
+
+      document.querySelectorAll("[data-en]")
+        .forEach(function(element) {
+
+          const english =
+            element.getAttribute("data-en");
+
+          element.textContent = isJapanese
+            ? (translations[english] || english)
+            : english;
+
+        });
+
+      /* ARTIST NAME */
+      document.getElementById("statement-name").textContent =
+        isJapanese ? "山田朋子" : "Tomoko Latko";
+
+      /* ARTIST STATEMENT */
+      document.getElementById("artist-statement").textContent =
+        isJapanese ? statementJapanese : statementEnglish;
+
+      /* JAPANESE STYLING */
+      document.body.classList.toggle(
+        "japanese-mode",
+        isJapanese
+      );
+
+      /* LANGUAGE BUTTON */
+      document.getElementById("toggle-lang").textContent =
+        isJapanese ? "English" : "日本語";
+
+      document.documentElement.lang =
+        isJapanese ? "ja" : "en";
+
+    }
+
+    /* LANGUAGE BUTTON EVENT */
+
+    document.getElementById("toggle-lang")
+      .addEventListener("click", function() {
+
+        isJapanese = !isJapanese;
+
+        try {
+          localStorage.setItem(
+            "moonPotteryLanguage",
+            isJapanese ? "ja" : "en"
+          );
+        } catch (error) {
+          // Language switching still works.
+        }
+
+        updateLanguage();
+
+      });
+
+    /* INITIAL DISPLAY */
+    updateLanguage();
+
+  </script>
+
+</body>
+</html>

@@ -1,0 +1,935 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Moon Pottery — ABOUT THE ARTIST</title>
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap" rel="stylesheet">
+
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+
+  <!-- Original Website CSS -->
+  <link href="scripts/css/main.css" rel="stylesheet">
+
+  <style>
+    /* ABOUT THE ARTIST */
+    .about {
+      padding: 70px 24px;
+    }
+
+    .about-title {
+      text-align: center;
+      font-size: 32px;
+      letter-spacing: 2px;
+      margin-bottom: 35px;
+    }
+
+    .about-text {
+      max-width: 760px;
+      margin: 0 auto 65px;
+      text-align: left !important;
+      white-space: pre-line;
+      font-size: 17px;
+      line-height: 1.9;
+      color: #444;
+      font-weight: 400;
+    }
+
+    /* CAPSTONE IMAGE */
+    .capstone-image {
+      max-width: 460px;
+      margin: 0 auto 55px;
+      text-align: center;
+    }
+
+    .capstone-image-button {
+      display: block;
+      width: 100%;
+      padding: 0;
+      background: none;
+      border: none;
+      cursor: zoom-in;
+    }
+
+    .capstone-image img {
+      display: block;
+      width: 100%;
+      height: auto;
+      transition: opacity 0.2s ease;
+    }
+
+    .capstone-image-button:hover img {
+      opacity: 0.9;
+    }
+
+    .image-hint {
+      margin-top: 12px;
+      font-size: 13px;
+      color: #888;
+    }
+
+    /* CAPSTONE ARTWORK DETAILS */
+    .capstone-details {
+      text-align: center;
+      margin-top: 24px;
+      color: #444;
+    }
+
+    .capstone-details h3 {
+      font-size: 19px;
+      font-weight: 500;
+      line-height: 1.5;
+      margin-bottom: 12px;
+    }
+
+    .capstone-details p {
+      font-size: 15px;
+      line-height: 1.6;
+      margin: 4px 0;
+    }
+
+    /* LIGHTBOX */
+    .lightbox {
+      position: fixed;
+      inset: 0;
+      z-index: 9999;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      background: rgba(0, 0, 0, 0.92);
+      padding: 50px 60px;
+    }
+
+    .lightbox.active {
+      display: flex;
+    }
+
+    .lightbox-image {
+      display: block;
+      max-width: 100%;
+      max-height: 88vh;
+      width: auto;
+      height: auto;
+      object-fit: contain;
+    }
+
+    .lightbox-close {
+      position: absolute;
+      top: 15px;
+      right: 25px;
+      color: white;
+      background: transparent;
+      border: none;
+      font-size: 42px;
+      font-weight: 300;
+      line-height: 1;
+      cursor: pointer;
+      z-index: 2;
+    }
+
+    .lightbox-arrow {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      padding: 10px;
+      border: none;
+      background: rgba(255, 255, 255, 0.1);
+      color: white;
+      font-size: 42px;
+      cursor: pointer;
+      z-index: 2;
+    }
+
+    .lightbox-prev {
+      left: 15px;
+    }
+
+    .lightbox-next {
+      right: 15px;
+    }
+
+    .lightbox-counter {
+      position: absolute;
+      bottom: 14px;
+      left: 50%;
+      transform: translateX(-50%);
+      color: #ddd;
+      font-size: 13px;
+    }
+
+    /* ARTIST RESUME */
+    .artist-resume {
+      max-width: 760px;
+      margin: 0 auto 70px;
+      padding: 45px 0 25px;
+      border-top: 1px solid #ddd;
+      color: #444;
+    }
+
+    .artist-resume h2 {
+      font-size: 27px;
+      text-align: center;
+      letter-spacing: 2px;
+      margin-bottom: 10px;
+    }
+
+    .artist-location {
+      text-align: center;
+      color: #777;
+      margin-bottom: 25px;
+      font-size: 15px;
+    }
+
+    .artist-contact {
+      text-align: center;
+      margin-bottom: 45px;
+      line-height: 1.8;
+      font-size: 15px;
+    }
+
+    .artist-contact p {
+      margin: 4px 0;
+    }
+
+    .artist-contact a {
+      color: #555;
+      text-decoration: none;
+      overflow-wrap: anywhere;
+    }
+
+    .artist-contact a:hover {
+      text-decoration: underline;
+    }
+
+    .artist-resume h3 {
+      font-size: 19px;
+      letter-spacing: 1.5px;
+      margin: 40px 0 25px;
+      padding-bottom: 12px;
+      border-bottom: 1px solid #ddd;
+    }
+
+    .resume-entry {
+      display: grid;
+      grid-template-columns: 90px minmax(0, 1fr);
+      gap: 20px;
+      margin-bottom: 28px;
+      line-height: 1.7;
+      font-size: 16px;
+    }
+
+    .resume-year {
+      color: #777;
+      font-weight: 500;
+    }
+
+    .resume-entry strong {
+      font-weight: 600;
+    }
+
+    .resume-entry p {
+      margin: 3px 0;
+    }
+
+    .resume-note {
+      color: #777;
+      font-size: 14px;
+    }
+
+    /* ARTWORK */
+    .artwork-heading {
+      text-align: center;
+      font-size: 25px;
+      letter-spacing: 1.5px;
+      margin-bottom: 35px;
+    }
+
+    .about .gallery {
+      max-width: 650px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: center;
+    }
+
+    .about .gallery .product {
+      width: 100%;
+      max-width: 450px;
+      text-align: center;
+    }
+
+    .about .gallery .product img {
+      max-width: 100%;
+      height: auto;
+    }
+
+    /* MOBILE */
+    @media (max-width: 600px) {
+      .about {
+        padding: 40px 18px;
+      }
+
+      .about-title {
+        font-size: 26px;
+      }
+
+      .about-text {
+        font-size: 16px;
+        line-height: 1.8;
+      }
+
+      .capstone-details h3 {
+        font-size: 18px;
+      }
+
+      .capstone-details p {
+        font-size: 14px;
+      }
+
+      .artist-resume {
+        padding-top: 35px;
+      }
+
+      .artist-resume h2 {
+        font-size: 23px;
+      }
+
+      .resume-entry {
+        grid-template-columns: 1fr;
+        gap: 5px;
+        margin-bottom: 25px;
+      }
+
+      .artwork-heading {
+        font-size: 22px;
+      }
+
+      .lightbox {
+        padding: 55px 40px;
+      }
+
+      .lightbox-close {
+        right: 15px;
+        font-size: 36px;
+      }
+
+      .lightbox-arrow {
+        font-size: 30px;
+        padding: 6px;
+      }
+
+      .lightbox-prev {
+        left: 2px;
+      }
+
+      .lightbox-next {
+        right: 2px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+<!-- HEADER -->
+<header>
+  <div class="brand">
+    <img
+      src="images/logo.jpg"
+      alt="Moon Pottery Logo"
+      class="header-logo">
+    Moon Pottery
+  </div>
+
+  <nav>
+    <a href="index.html" class="nav-home">HOME</a>
+    <a href="shop.html" class="nav-shop">SHOP</a>
+    <a href="about.html" class="nav-about">ABOUT</a>
+    <a href="contact.html" class="nav-contact">CONTACT</a>
+    <button class="lang-btn" id="toggle-lang">日本語</button>
+  </nav>
+</header>
+
+<main>
+
+  <!-- ABOUT THE ARTIST -->
+  <section class="section about">
+
+    <h2 class="about-title">ABOUT THE ARTIST</h2>
+
+    <p class="about-text"></p>
+
+    <!-- CAPSTONE ARTWORK -->
+    <figure class="capstone-image">
+
+      <button
+        type="button"
+        class="capstone-image-button"
+        id="open-capstone"
+        aria-label="Open additional ceramic artwork photographs">
+
+        <!-- MAIN IMAGE: CAPSTONE 1 -->
+        <img
+          src="images/capstone1.jpeg"
+          alt="Mizutama ceramic vase, tribute to Kusama"
+          loading="lazy">
+
+      </button>
+
+      <figcaption class="image-hint">
+        Click image to view more photos
+      </figcaption>
+
+      <!-- ARTWORK INFORMATION -->
+      <div class="capstone-details">
+
+        <h3 class="capstone-title">
+          Mizutama (水玉) — Tribute to Kusama
+        </h3>
+
+        <p class="capstone-date">
+          December 1, 2026
+        </p>
+
+        <p class="capstone-medium">
+          Clay-Bmix
+        </p>
+
+        <p class="capstone-size">
+          50 × 25 cm (H × W)
+        </p>
+
+      </div>
+
+    </figure>
+
+    <!-- ARTIST RESUME -->
+    <section class="artist-resume">
+
+      <h2>TOMOKO LATKO</h2>
+
+      <p class="artist-location">
+        Ceramic Artist · Mountain View, CA
+      </p>
+
+      <!-- CONTACT -->
+      <div class="artist-contact">
+
+        <p>
+          Email:
+          <a href="mailto:tomoko@latko.org">
+            tomoko@latko.org
+          </a>
+        </p>
+
+        <p>
+          Website:
+          <a
+            href="https://tomokolatko-hash.github.io/moon/"
+            target="_blank"
+            rel="noopener noreferrer">
+            Moon Pottery
+          </a>
+        </p>
+
+      </div>
+
+      <!-- EDUCATION -->
+      <h3 class="education-heading">EDUCATION</h3>
+
+      <div class="resume-entry">
+        <span class="resume-year">2027</span>
+
+        <div>
+          <strong>
+            BA in Studio Practice (Candidate)
+          </strong>
+
+          <p>
+            San José State University,
+            San José, CA
+          </p>
+
+          <p class="resume-note graduation-note">
+            Expected graduation: May 2027
+          </p>
+        </div>
+      </div>
+
+      <div class="resume-entry">
+        <span class="resume-year">2024</span>
+
+        <div>
+          <strong>Ceramics Studies</strong>
+
+          <p>
+            Mikado Kobo,
+            Kawagoe, Saitama, Japan
+          </p>
+
+          <p class="resume-note training-note">
+            June–August
+          </p>
+        </div>
+      </div>
+
+      <div class="resume-entry">
+        <span class="resume-year">2018–22</span>
+
+        <div>
+          <strong>Ceramics Studies</strong>
+
+          <p>
+            Community School of Music & Arts,
+            Mountain View, CA
+          </p>
+        </div>
+      </div>
+
+      <!-- EXHIBITIONS -->
+      <h3 class="exhibitions-heading">EXHIBITIONS</h3>
+
+      <div class="resume-entry">
+        <span class="resume-year">2023</span>
+
+        <div>
+          <strong>
+            <em>
+              Forming Function:
+              Ceramics with a Purpose
+            </em>
+          </strong>
+
+          <p>
+            Palo Alto Art Center,
+            Palo Alto, CA
+          </p>
+        </div>
+      </div>
+
+    </section>
+
+    <!-- ARTWORK -->
+    <h2 class="artwork-heading">ARTWORK</h2>
+
+    <div class="gallery">
+
+      <div class="product">
+
+        <a href="images/pastel.jpeg" target="_blank">
+          <img
+            src="images/pastel.jpeg"
+            alt="Pastel Ceramic">
+        </a>
+
+        <h5 class="item2-title">
+          Integration of Ceramics &amp; Art
+        </h5>
+
+        <p class="item2-desc">
+          A serene space where ideas take shape transforms into art.
+        </p>
+
+        <a
+          href="https://tomokolatko-hash.github.io/Colored/"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="btn item2-btn">
+          View Artwork
+        </a>
+
+      </div>
+
+    </div>
+
+  </section>
+
+</main>
+
+<!-- IMAGE LIGHTBOX -->
+<div
+  class="lightbox"
+  id="capstone-lightbox"
+  role="dialog"
+  aria-modal="true"
+  aria-label="Additional ceramic artwork photographs"
+  aria-hidden="true">
+
+  <button
+    type="button"
+    class="lightbox-close"
+    id="lightbox-close"
+    aria-label="Close image">
+    &times;
+  </button>
+
+  <button
+    type="button"
+    class="lightbox-arrow lightbox-prev"
+    id="lightbox-prev"
+    aria-label="Previous image">
+    &#10094;
+  </button>
+
+  <img
+    id="lightbox-image"
+    class="lightbox-image"
+    src="images/capstone2.jpeg"
+    alt="Mizutama ceramic artwork additional view">
+
+  <button
+    type="button"
+    class="lightbox-arrow lightbox-next"
+    id="lightbox-next"
+    aria-label="Next image">
+    &#10095;
+  </button>
+
+  <span
+    class="lightbox-counter"
+    id="lightbox-counter">
+  </span>
+
+</div>
+
+<!-- FOOTER -->
+<footer>
+  &copy; 2025 MOON POTTERY — ALL RIGHTS RESERVED.
+
+  <div class="footer-links" style="margin-top: 1rem;">
+    <a href="about.html" class="foot-about">ABOUT</a> |
+    <a href="faqs.html" class="foot-faqs">FAQs</a> |
+    <a href="contact.html" class="foot-contact">CONTACT</a> |
+    <a href="press.html" class="foot-press">PRESS ROOM</a>
+  </div>
+
+  <div class="footer-logo">
+    <img
+      src="images/logo.jpg"
+      alt="Moon Pottery Logo">
+  </div>
+</footer>
+
+<!-- Bootstrap JS -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+<!-- LANGUAGE SWITCH -->
+<script>
+  const langBtn = document.getElementById("toggle-lang");
+
+  let isEnglish = true;
+
+  try {
+    isEnglish = localStorage.getItem("isEnglish") !== "false";
+  } catch (error) {
+    isEnglish = true;
+  }
+
+  /* ENGLISH BIOGRAPHY */
+  const aboutEnglish = `Tomoko Latko is a Japanese ceramic artist whose work is inspired by traditional Japanese ceramics and everyday life.
+
+She used to travel with her family to many different countries and cities, and her first encounter with traditional Japanese ceramics was when she was 6 years old. Her mother bought her an Arita chawan. She still remembers the beautiful details and designs of that piece.
+
+Tomoko has been working with clay for over eight years, mainly using the potter's wheel. She creates practical and functional ceramics for daily use, including cups and plates. She believes that handmade ceramics can bring extra joy and color to the table, much like flowers in a vase.
+
+Tomoko participated in the exhibition "Forming Function: Ceramics with a Purpose" at the Palo Alto Art Center in Palo Alto, California in 2023.`;
+
+  /* JAPANESE BIOGRAPHY */
+  const aboutJapanese = `山田朋子は、日本の伝統的な陶芸や日常生活からインスピレーションを受けて作品を制作する日本人陶芸家です。
+
+幼い頃から家族とともにさまざまな国や都市を旅してきました。日本の伝統的な陶芸との最初の出会いは、6歳のときでした。母親が買ってくれた有田焼の茶碗がきっかけで、その美しい装飾や繊細なデザインは、今でも鮮明に記憶に残っています。
+
+朋子は8年以上にわたり陶芸に取り組んでおり、主にろくろを使って制作しています。カップやお皿など、日常生活で使える実用的な陶器を中心に制作しています。
+
+彼女は、手作りの陶器には、花瓶に生けた花のように、食卓に彩りや喜びを添える力があると考えています。
+
+2023年には、カリフォルニア州パロアルトにあるPalo Alto Art Centerで開催された展覧会「Forming Function: Ceramics with a Purpose」に出展しました。`;
+
+  /* UPDATE LANGUAGE */
+  function updateLanguage() {
+    document.documentElement.lang = isEnglish ? "en" : "ja";
+
+    /* NAVIGATION */
+    document.querySelector(".nav-home").textContent =
+      isEnglish ? "HOME" : "ホーム";
+
+    document.querySelector(".nav-shop").textContent =
+      isEnglish ? "SHOP" : "ショップ";
+
+    document.querySelector(".nav-about").textContent =
+      isEnglish ? "ABOUT" : "アバウト";
+
+    document.querySelector(".nav-contact").textContent =
+      isEnglish ? "CONTACT" : "コンタクト";
+
+    /* ABOUT */
+    document.querySelector(".about-title").textContent =
+      isEnglish ? "ABOUT THE ARTIST" : "自己紹介";
+
+    document.querySelector(".about-text").textContent =
+      isEnglish ? aboutEnglish : aboutJapanese;
+
+    langBtn.textContent =
+      isEnglish ? "日本語" : "English";
+
+    /* IMAGE HINT */
+    document.querySelector(".image-hint").textContent =
+      isEnglish
+        ? "Click image to view more photos"
+        : "画像をクリックすると他の写真を表示します";
+
+    /* CAPSTONE ARTWORK INFORMATION */
+    document.querySelector(".capstone-title").textContent =
+      isEnglish
+        ? "Mizutama (水玉) — Tribute to Kusama"
+        : "水玉 — 草間彌生へのオマージュ";
+
+    document.querySelector(".capstone-date").textContent =
+      isEnglish
+        ? "December 1, 2026"
+        : "2026年12月1日";
+
+    document.querySelector(".capstone-medium").textContent =
+      isEnglish ? "Clay-Bmix" : "陶土";
+
+    document.querySelector(".capstone-size").textContent =
+      isEnglish
+        ? "50 × 25 cm (H × W)"
+        : "高さ50 × 幅25 cm";
+
+    /* RESUME HEADINGS */
+    document.querySelector(".education-heading").textContent =
+      isEnglish ? "EDUCATION" : "学歴・陶芸研修歴";
+
+    document.querySelector(".exhibitions-heading").textContent =
+      isEnglish ? "EXHIBITIONS" : "展覧会";
+
+    document.querySelector(".graduation-note").textContent =
+      isEnglish
+        ? "Expected graduation: May 2027"
+        : "2027年5月卒業予定";
+
+    document.querySelector(".training-note").textContent =
+      isEnglish
+        ? "June–August"
+        : "6月〜8月";
+
+    /* ARTWORK */
+    document.querySelector(".artwork-heading").textContent =
+      isEnglish ? "ARTWORK" : "作品";
+
+    document.querySelector(".item2-title").textContent =
+      isEnglish
+        ? "Integration of Ceramics & Art"
+        : "陶芸とアートの融合";
+
+    document.querySelector(".item2-desc").textContent =
+      isEnglish
+        ? "A serene space where ideas take shape transforms into art."
+        : "アイデアが形になる静かな空間がアートへと変わります。";
+
+    document.querySelector(".item2-btn").textContent =
+      isEnglish ? "View Artwork" : "作品を見る";
+
+    /* FOOTER */
+    document.querySelector(".foot-about").textContent =
+      isEnglish ? "ABOUT" : "アバウト";
+
+    document.querySelector(".foot-faqs").textContent =
+      isEnglish ? "FAQs" : "よくある質問";
+
+    document.querySelector(".foot-contact").textContent =
+      isEnglish ? "CONTACT" : "コンタクト";
+
+    document.querySelector(".foot-press").textContent =
+      isEnglish ? "PRESS ROOM" : "プレスルーム";
+  }
+
+  /* LANGUAGE BUTTON */
+  langBtn.addEventListener("click", () => {
+    isEnglish = !isEnglish;
+
+    try {
+      localStorage.setItem("isEnglish", isEnglish);
+    } catch (error) {
+      // Language switch works without storage.
+    }
+
+    updateLanguage();
+  });
+
+  /* INITIAL DISPLAY */
+  updateLanguage();
+</script>
+
+<!-- CAPSTONE IMAGE GALLERY -->
+<script>
+  /*
+    MAIN PAGE:
+      capstone1.jpeg
+
+    CLICK TO VIEW:
+      capstone2.jpeg
+      capstone3.jpeg
+      capstone4.jpeg
+  */
+
+  const capstoneImages = [
+    "images/capstone2.jpeg",
+    "images/capstone3.jpeg",
+    "images/capstone4.jpeg"
+  ];
+
+  const lightbox =
+    document.getElementById("capstone-lightbox");
+
+  const lightboxImage =
+    document.getElementById("lightbox-image");
+
+  const openButton =
+    document.getElementById("open-capstone");
+
+  const closeButton =
+    document.getElementById("lightbox-close");
+
+  const prevButton =
+    document.getElementById("lightbox-prev");
+
+  const nextButton =
+    document.getElementById("lightbox-next");
+
+  const counter =
+    document.getElementById("lightbox-counter");
+
+  let currentImageIndex = 0;
+  let previouslyFocusedElement = null;
+
+  /* UPDATE IMAGE */
+  function updateGalleryImage() {
+    lightboxImage.src =
+      capstoneImages[currentImageIndex];
+
+    lightboxImage.alt =
+      "Mizutama ceramic artwork additional view " +
+      (currentImageIndex + 1);
+
+    counter.textContent =
+      (currentImageIndex + 1) +
+      " / " +
+      capstoneImages.length;
+  }
+
+  /* OPEN LIGHTBOX */
+  function openLightbox() {
+    previouslyFocusedElement =
+      document.activeElement;
+
+    // Start with capstone2.jpeg
+    currentImageIndex = 0;
+    updateGalleryImage();
+
+    lightbox.classList.add("active");
+    lightbox.setAttribute("aria-hidden", "false");
+
+    document.body.style.overflow = "hidden";
+    closeButton.focus();
+  }
+
+  /* CLOSE LIGHTBOX */
+  function closeLightbox() {
+    lightbox.classList.remove("active");
+    lightbox.setAttribute("aria-hidden", "true");
+
+    document.body.style.overflow = "";
+
+    if (previouslyFocusedElement) {
+      previouslyFocusedElement.focus();
+    }
+  }
+
+  /* CHANGE IMAGE */
+  function changeImage(direction) {
+    currentImageIndex =
+      (currentImageIndex +
+       direction +
+       capstoneImages.length) %
+      capstoneImages.length;
+
+    updateGalleryImage();
+  }
+
+  /* BUTTON EVENTS */
+  openButton.addEventListener(
+    "click",
+    openLightbox
+  );
+
+  closeButton.addEventListener(
+    "click",
+    closeLightbox
+  );
+
+  prevButton.addEventListener(
+    "click",
+    () => changeImage(-1)
+  );
+
+  nextButton.addEventListener(
+    "click",
+    () => changeImage(1)
+  );
+
+  /* CLOSE BY CLICKING BACKGROUND */
+  lightbox.addEventListener("click", event => {
+    if (event.target === lightbox) {
+      closeLightbox();
+    }
+  });
+
+  /* KEYBOARD CONTROLS */
+  document.addEventListener("keydown", event => {
+    if (!lightbox.classList.contains("active")) {
+      return;
+    }
+
+    if (event.key === "Escape") {
+      closeLightbox();
+    }
+
+    if (event.key === "ArrowLeft") {
+      changeImage(-1);
+    }
+
+    if (event.key === "ArrowRight") {
+      changeImage(1);
+    }
+
+    if (event.key === "Tab") {
+      const controls = [
+        closeButton,
+        prevButton,
+        nextButton
+      ];
+
+      const currentIndex =
+        controls.indexOf(document.activeElement);
+
+      if (event.shiftKey) {
+        if (currentIndex <= 0) {
+          event.preventDefault();
+          controls[controls.length - 1].focus();
+        }
+      } else if (currentIndex === controls.length - 1) {
+        event.preventDefault();
+        controls[0].focus();
+      }
+    }
+  });
+</script>
+
+</body>
+</html>
